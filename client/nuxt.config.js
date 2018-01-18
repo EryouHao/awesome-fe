@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -38,7 +40,18 @@ module.exports = {
     },
     vendor: [
       'vue-material',
+      'axios',
+      'moment',
     ],
+    extractCSS: true,
+    filenames: {
+      vendor: 'vendor.[hash:12].js',
+      app: 'amz.[chunkhash:12].js',
+      css: 'amz.[contenthash:12].css',
+    },
+    plugins: [
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)
+    ]
   },
   css: [
     { src: 'vue-material/dist/vue-material.min.css', lang: 'css' },
@@ -46,5 +59,17 @@ module.exports = {
   ],
   plugins: [
     { src: '~plugins/vue-material' },
+  ],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+  ],
+  proxy: [
+    ['/api', {
+      local: {
+        target: 'http://localhost:7001',
+        pathRewrite: { '^/api': '/' },
+      },
+    }[process.env.NODE_ENV || 'local']],
   ],
 }

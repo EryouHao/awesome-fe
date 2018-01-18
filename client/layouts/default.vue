@@ -1,26 +1,6 @@
 <template>
   <div class="page-container">
-    <md-toolbar class="md-primary">
-      <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <span class="md-title">My Title</span>
-      <div class="md-toolbar-section-end">
-        <md-button>Favorites</md-button>
-      </div>
-    </md-toolbar>
-
-    <md-drawer :md-active.sync="menuVisible">
-      <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-
-      <md-list>
-        <md-list-item>
-          <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text">Inbox</span>
-        </md-list-item>
-
-      </md-list>
-    </md-drawer>
+    <a-header></a-header>
 
     <md-content class="main-container">
       <nuxt/>
@@ -30,11 +10,13 @@
 
 
 <script>
+import AHeader from '~/components/AHeader'
+
 export default {
+  components: {
+    AHeader,
+  },
   name: 'Reveal',
-  data: () => ({
-    menuVisible: false,
-  })
 }
 </script>
 
@@ -42,10 +24,6 @@ export default {
   .main-container {
     padding: 24px 32px;
     background: #f5f5f5;
-  }
-  .md-drawer {
-    width: 230px;
-    max-width: calc(100vw - 125px);
   }
 </style>
 
