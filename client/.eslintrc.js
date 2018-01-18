@@ -11,6 +11,9 @@ module.exports = {
     'html'
   ],
   // add your custom rules here
-  rules: {},
+  rules: {
+    "comma-dangle": ["error", "only-multiline"],
+    "space-before-function-paren": ["error", "always"],
+  },
   globals: {}
 }

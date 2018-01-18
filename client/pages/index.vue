@@ -1,16 +1,18 @@
 <template>
-  <section class="container">
-    <div>
-      <h1 class="title">
-        Awesome FE
-      </h1>
-      <h2 class="subtitle">
-        Awesome FE
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+  <section class="home">
+    <div class="content">
+      <md-tabs>
+        <md-tab id="tab-home" md-label="全部" @click="$router.push('/')"></md-tab>
+        <md-tab id="tab-pages" md-label="Visual Studio Code" @click="$router.push('/vscode')"></md-tab>
+        <md-tab id="tab-posts" md-label="Atom" @click="$router.push('/atom')"></md-tab>
+        <md-tab id="tab-favorites" md-label="Sublime Text" @click="$router.push('/sublime-text')"></md-tab>
+      </md-tabs>
+      <div class="child-content">
+        <nuxt-child/>
       </div>
+    </div>
+    <div class="sidebar">
+      导航
     </div>
   </section>
 </template>
@@ -21,33 +23,19 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
+<style lang="scss" scoped>
+.home {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.content {
+  flex: 1;
+  background: #fff;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.child-content {
+  padding: 8px 0 24px;
 }
-
-.links {
-  padding-top: 15px;
+.sidebar {
+  width: 320px;
+  // background: #000;
 }
 </style>
