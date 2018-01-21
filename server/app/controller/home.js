@@ -21,12 +21,11 @@ class HomeController extends Controller {
         const res = await userModel.save();
         console.log('第一次创建');
         console.log(res);
-        ctx.body = 'success';
       } else {
         console.log('已经存在了');
         console.log(ctx.user);
-        ctx.redirect('http://127.0.0.1:3000');
       }
+      ctx.redirect('http://127.0.0.1:3000');
     } else {
       ctx.session.returnTo = ctx.path;
       ctx.body = `

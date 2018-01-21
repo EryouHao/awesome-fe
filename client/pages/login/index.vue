@@ -7,7 +7,6 @@
 <script>
 export default {
   data: () => ({
-
   }),
   methods: {
     async loginWithGithub () {

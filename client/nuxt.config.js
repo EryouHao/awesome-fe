@@ -60,6 +60,7 @@ module.exports = {
   plugins: [
     { src: '~plugins/vue-material' },
     { src: '~plugins/axios' },
+    { src: '~plugins/mavon-editor', ssr: false },
   ],
   modules: [
     '@nuxtjs/axios',

@@ -6,6 +6,9 @@
       </md-button>
       <span class="md-title" @click="$router.push('/')">Awesome FE</span>
       <div class="md-toolbar-section-end">
+        <md-button class="md-mini" to="/topic/create">
+          <md-icon>add</md-icon>新话题
+        </md-button>
         <md-button v-if="!logged" to="/login">Login</md-button>
         <span v-else>
           <md-avatar>
