@@ -1,7 +1,10 @@
-const Service = require('egg').Service;
+// 'use strict';
 
-class UserService extends Service {
-  async getUserInfo() {
+// const Service = require('egg').Service;
 
-  },
-}
+// class UserService extends Service {
+//   async getUserInfo() {
+//   }
+// }
+
+// module.exports = UserService;

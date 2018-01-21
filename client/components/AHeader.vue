@@ -6,8 +6,13 @@
       </md-button>
       <span class="md-title" @click="$router.push('/')">Awesome FE</span>
       <div class="md-toolbar-section-end">
-        <md-button to="/login">Login</md-button>
-        <md-button to="/personal">EryouHao</md-button>
+        <md-button v-if="!logged" to="/login">Login</md-button>
+        <span v-else>
+          <md-avatar>
+            <img :src="user.photo" alt="Avatar">
+          </md-avatar>
+          <md-button to="/personal">{{ user.name }}</md-button>
+        </span>
       </div>
     </md-toolbar>
 
@@ -17,7 +22,7 @@
       <md-list>
         <md-list-item>
           <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text">Inbox</span>
+          <span class="md-list-item-text" @click="logout">Logout</span>
         </md-list-item>
 
       </md-list>
@@ -26,10 +31,29 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   data: () => ({
     menuVisible: false,
-  })
+  }),
+  computed: {
+    ...mapGetters({
+      logged: 'logged',
+    }),
+    user() {
+      return this.$store.state.user
+    },
+  },
+  async mounted () {
+    await this.fetchUserInfo()
+  },
+  methods: {
+    ...mapActions({
+      logout: 'logout',
+      fetchUserInfo: 'fetchUserInfo',
+    }),
+  },
 }
 </script>
 

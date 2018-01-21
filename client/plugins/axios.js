@@ -48,7 +48,8 @@ export default ({ redirect, store }) => {
   console.log(post, get)
 
   const user = {
-
+    fetchUserInfo: () => get('/api/user/info'),
+    logout: () => get('/api/user/logout'),
   }
 
   Vue.prototype.$api = {

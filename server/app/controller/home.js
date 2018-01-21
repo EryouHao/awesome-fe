@@ -6,14 +6,6 @@ class HomeController extends Controller {
   async render() {
     const ctx = this.ctx;
     if (ctx.isAuthenticated()) {
-      // ctx.body = `<div>
-      //   <h2>${ctx.path}</h2>
-      //   <hr>
-      //   Logined user: <img src="${ctx.user.photo}"> ${ctx.user.displayName} / ${ctx.user.id} | <a href="/logout">Logout</a>
-      //   <pre><code>${JSON.stringify(ctx.user, null, 2)}</code></pre>
-      //   <hr>
-      //   <a href="/">Home</a> | <a href="/user">User</a>
-      // </div>`;
       // 如果登录，则检查是否存在用户，不存在则创建用户
       const user = await ctx.model.User.find({ id: ctx.user.id });
       if (!user.length) {
@@ -32,9 +24,9 @@ class HomeController extends Controller {
         ctx.body = 'success';
       } else {
         console.log('已经存在了');
-        ctx.body = ctx.user;
+        console.log(ctx.user);
+        ctx.redirect('http://127.0.0.1:3000');
       }
-      ctx.body = ctx.user;
     } else {
       ctx.session.returnTo = ctx.path;
       ctx.body = `

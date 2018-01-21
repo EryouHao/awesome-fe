@@ -13,6 +13,7 @@ module.exports = appInfo => {
   config.passportGithub = {
     key: 'a20309c7cd5fdb49a703',
     secret: '403925a1e5c821d12ff27c306c152b343d2b2ee2',
+    callbackURL: '/passport/github',
   };
 
   // mongo

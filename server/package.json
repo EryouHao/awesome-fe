@@ -8,7 +8,9 @@
     "egg-mongoose": "^2.1.1",
     "egg-passport": "^2.0.1",
     "egg-passport-github": "^1.0.0",
-    "egg-scripts": "^2.1.0"
+    "egg-scripts": "^2.1.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "autod": "^3.0.1",

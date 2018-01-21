@@ -59,11 +59,28 @@ module.exports = {
   ],
   plugins: [
     { src: '~plugins/vue-material' },
+    { src: '~plugins/axios' },
   ],
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
+    'nuxt-oauth',
   ],
+  oauth: {
+    sessionName: 'awesomeFe',
+    secretKey: 'awesomefe',
+    oauthHost: 'github',
+    oauthClientID: 'a20309c7cd5fdb49a703',
+    oauthClientSecret: '403925a1e5c821d12ff27c306c152b343d2b2ee2',
+    onlogout: (req, res) => {
+      // do something after logging out
+    },
+    fetchUser: (accessToken) => {
+      // do something to return the user
+      // const user = User.findByToken(accessToken)
+      // return user
+    },
+  },
   proxy: [
     ['/api', {
       local: {
