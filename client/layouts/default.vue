@@ -1,17 +1,21 @@
 <template>
-  <div class="page-container">
+  <v-app>
     <a-header></a-header>
-
-    <md-content class="main-container">
-      <nuxt/>
-    </md-content>
-  </div>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout
+        >
+          <nuxt/>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 
-<script>
-import AHeader from '~/components/AHeader'
 
+<script>
+import AHeader from '../components/AHeader'
 export default {
   components: {
     AHeader,
@@ -21,10 +25,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .main-container {
-    padding: 24px 32px;
-    background: #f5f5f5;
-  }
 </style>
 
 <style>

@@ -1,9 +1,9 @@
 <template>
   <div class="cell">
     <div class="title-container">
-      <md-avatar class="avatar">
+      <v-avatar class="avatar">
         <img src="~assets/images/avatar.png" alt="Avatar">
-      </md-avatar>
+      </v-avatar>
       <span class="number">96 / 14505</span>
       <span class="tag">精华</span>
       <span></span>

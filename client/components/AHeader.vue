@@ -1,35 +1,56 @@
 <template>
   <div class="">
-    <md-toolbar class="md-primary">
-      <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <span class="md-title" @click="$router.push('/')">Awesome FE</span>
-      <div class="md-toolbar-section-end">
-        <md-button class="md-mini" to="/topic/create">
-          <md-icon>add</md-icon>新话题
-        </md-button>
-        <md-button v-if="!logged" to="/login">Login</md-button>
-        <span v-else>
-          <md-avatar>
+    <v-navigation-drawer
+      fixed
+      v-model="drawer"
+      app
+    >
+      <v-list dense>
+        <v-list-tile @click="$router.push('/')">
+          <v-list-tile-action>
+            <v-icon>home</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Home</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar color="black" dark fixed app>
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>Application</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn to="/topic/create"><v-icon>add</v-icon>新话题</v-btn>
+      <v-btn v-if="!logged" to="/login">Login</v-btn>
+      <span v-else>
+        <v-menu
+          v-model="menu"
+          :nudge-width="200"
+          offset-x
+          :close-on-content-click="false"
+        >
+          <v-avatar size="32" slot="activator">
             <img :src="user.photo" alt="Avatar">
-          </md-avatar>
-          <md-button to="/personal">{{ user.name }}</md-button>
-        </span>
-      </div>
-    </md-toolbar>
-
-    <md-drawer :md-active.sync="menuVisible">
-      <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-
-      <md-list>
-        <md-list-item>
-          <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text" @click="logout">Logout</span>
-        </md-list-item>
-
-      </md-list>
-    </md-drawer>
+          </v-avatar>
+          <v-card>
+            <v-list avatar>
+              <v-list-tile-avatar to="/personal">
+                <img :src="user.photo" alt="Avatar">
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ user.name }}</v-list-tile-title>
+                <v-list-tile-sub-title>Front Developer</v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list>
+            <v-divider></v-divider>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn type="text" @click="logout">Logout</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
+      </span>
+    </v-toolbar>
   </div>
 </template>
 
@@ -39,12 +60,14 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data: () => ({
     menuVisible: false,
+    drawer: false,
+    menu: false,
   }),
   computed: {
     ...mapGetters({
       logged: 'logged',
     }),
-    user() {
+    user () {
       return this.$store.state.user
     },
   },

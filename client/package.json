@@ -16,9 +16,9 @@
     "axios": "^0.17.1",
     "mavon-editor": "^2.4.16",
     "moment": "^2.20.1",
-    "nuxt": "^1.0.0-rc11",
-    "nuxt-oauth": "0.0.6",
-    "vue-material": "^1.0.0-beta-7"
+    "nuxt": "^1.4.0",
+    "nuxt-oauth": "^1.0.0",
+    "vuetify": "^1.0.11"
   },
   "devDependencies": {
     "@nuxtjs/axios": "^4.5.0",

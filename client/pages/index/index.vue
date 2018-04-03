@@ -1,6 +1,6 @@
 <template>
   <div class="all">
-    <article-cell></article-cell>
+    <article-cell v-for="i in 10" :key="i"></article-cell>
   </div>
 </template>
 

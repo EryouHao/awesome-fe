@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <md-button class="md-raised md-primary" @click="loginWithGithub"><i class="fa fa-github"></i> Login with Github</md-button>
+    <v-btn @click="loginWithGithub"><i class="fa fa-github"></i> Login with Github</v-btn>
   </div>
 </template>
 

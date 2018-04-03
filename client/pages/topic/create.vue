@@ -1,38 +1,27 @@
 <template>
   <div class="">
-    <form class="md-layout-row md-gutter" @submit.prevent="submit">
-      <md-card class="md-flex-50 md-flex-small-100">
-        <md-card-header>
-          <div class="md-title">🆕 新话题</div>
-        </md-card-header>
-
-        <md-card-content>
-          <div class="md-layout-row md-layout-wrap md-gutter">
-            <div class="md-flex md-flex-small-100">
-              <md-field>
-                <label for="first-name">标题</label>
-                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="title" :disabled="sending" />
-              </md-field>
-            </div>
+    <form @submit.prevent="submit">
+      <v-card>
+        <v-card-title>
+          <div>
+            <h3>🆕 新话题</h3>
+            <v-text-field
+              label="标题"
+              v-model="title"
+              required
+            ></v-text-field>
+            <v-radio-group v-model="category" row>
+              <v-radio color="black" value="vscode" label="VScode"></v-radio>
+              <v-radio color="black" value="atom" label="Atom"></v-radio>
+              <v-radio color="black" value="sublime" label="Sublime Text"></v-radio>
+            </v-radio-group>
+            <mavon-editor v-model="content" />
+            <v-card-actions>
+              <v-btn type="submit" class="md-primary" :disabled="sending">发布</v-btn>
+            </v-card-actions>
           </div>
-          <div class="md-layout-row md-layout-wrap md-gutter">
-            <div class="md-flex md-flex-small-100">
-              <md-radio v-model="category" value="vscode" class="md-primary">Vscode</md-radio>
-              <md-radio v-model="category" value="atom" class="md-primary">Atom</md-radio>
-              <md-radio v-model="category" value="sublime" class="md-primary">Sublime Text</md-radio>
-            </div>
-          </div>
-        </md-card-content>
-
-        <!-- <md-progress-bar md-mode="indeterminate" v-if="sending" /> -->
-        <mavon-editor v-model="content" />
-
-        <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">发布</md-button>
-        </md-card-actions>
-      </md-card>
-
-      <!-- <md-snackbar :md-active.sync="">新话题创建成功!</md-snackbar> -->
+        </v-card-title>
+      </v-card>
     </form>
   </div>
 </template>

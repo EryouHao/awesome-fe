@@ -1,12 +1,6 @@
 <template>
   <section class="home">
     <div class="content">
-      <md-tabs>
-        <md-tab id="tab-home" md-label="全部" @click="$router.push('/')"></md-tab>
-        <md-tab id="tab-pages" md-label="Visual Studio Code" @click="$router.push('/vscode')"></md-tab>
-        <md-tab id="tab-posts" md-label="Atom" @click="$router.push('/atom')"></md-tab>
-        <md-tab id="tab-favorites" md-label="Sublime Text" @click="$router.push('/sublime-text')"></md-tab>
-      </md-tabs>
       <div class="child-content">
         <nuxt-child/>
       </div>
@@ -26,6 +20,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   display: flex;
+  width: 100%;
 }
 .content {
   flex: 1;
@@ -33,6 +28,7 @@ export default {
 }
 .child-content {
   padding: 8px 0 24px;
+  flex: 1;
 }
 .sidebar {
   width: 320px;

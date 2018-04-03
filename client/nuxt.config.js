@@ -39,26 +39,26 @@ module.exports = {
       }
     },
     vendor: [
-      'vue-material',
+      'vuetify',
       'axios',
       'moment',
     ],
     extractCSS: true,
     filenames: {
       vendor: 'vendor.[hash:12].js',
-      app: 'amz.[chunkhash:12].js',
-      css: 'amz.[contenthash:12].css',
+      app: 'afe.[chunkhash:12].js',
+      css: 'afe.[contenthash:12].css',
     },
     plugins: [
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)
     ]
   },
   css: [
-    { src: 'vue-material/dist/vue-material.min.css', lang: 'css' },
-    { src: '~/assets/theme.scss', lang: 'scss' }, // include vue-material theme engine
+    { src: 'vuetify/dist/vuetify.min.css', lang: 'css' },
+    { src: '~/assets/theme.scss', lang: 'scss' },
   ],
   plugins: [
-    { src: '~plugins/vue-material' },
+    { src: '~plugins/vuetify.js' },
     { src: '~plugins/axios' },
     { src: '~plugins/mavon-editor', ssr: false },
   ],
