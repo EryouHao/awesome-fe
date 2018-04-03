@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 module.exports = appInfo => {
   const config = exports = {};
 
@@ -20,6 +22,19 @@ module.exports = appInfo => {
   config.mongoose = {
     url: 'mongodb://localhost:27017/awesome_fe',
     options: {},
+  };
+
+  // upload
+  config.upload = {
+    path: path.join(appInfo.baseDir, 'app/public/upload/'),
+    url: '/public/upload/',
+  };
+
+  // 关闭安全威胁
+  config.security = {
+    csrf: {
+      enable: false,
+    },
   };
 
   return config;

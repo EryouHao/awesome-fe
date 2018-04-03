@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "await-stream-ready": "^1.0.1",
     "egg": "^2.0.0",
     "egg-mongoose": "^2.1.1",
     "egg-passport": "^2.0.1",

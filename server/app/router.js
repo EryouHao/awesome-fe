@@ -10,6 +10,7 @@ module.exports = app => {
   router.get('/user', controller.home.render);
   router.get('/user/info', controller.user.getUserInfo);
   router.get('/user/logout', controller.user.logout);
+  router.post('/topic/upload', controller.topic.upload);
 
   /**
    * 挂载鉴权路由，相当于

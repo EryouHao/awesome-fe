@@ -52,7 +52,12 @@ export default ({ redirect, store }) => {
     logout: () => get('/api/user/logout'),
   }
 
+  const topic = {
+    uploadImage: file => post('/api/topic/upload', file),
+  }
+
   Vue.prototype.$api = {
     user,
+    topic,
   }
 }
