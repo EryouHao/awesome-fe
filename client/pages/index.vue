@@ -1,13 +1,21 @@
 <template>
   <section class="home">
-    <div class="content">
-      <div class="child-content">
-        <nuxt-child/>
-      </div>
-    </div>
-    <div class="sidebar">
-      导航
-    </div>
+    <v-container grid-list-md fluid>
+      <v-layout row wrap>
+        <v-flex xs9>
+          <div class="content">
+            <div class="child-content">
+              <nuxt-child/>
+            </div>
+          </div>
+        </v-flex>
+        <v-flex xs3>
+          <div class="sidebar">
+            导航
+          </div>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </section>
 </template>
 
@@ -27,7 +35,7 @@ export default {
   background: #fff;
 }
 .child-content {
-  padding: 8px 0 24px;
+  padding: 0 0 24px;
   flex: 1;
 }
 .sidebar {

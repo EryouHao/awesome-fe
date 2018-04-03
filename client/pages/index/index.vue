@@ -1,6 +1,24 @@
 <template>
   <div class="all">
-    <article-cell v-for="i in 10" :key="i"></article-cell>
+    <v-tabs
+      v-model="active"
+      color="#f5f5f5"
+      slider-color="black"
+      height="40"
+    >
+      <v-tab :key="1">VSCode</v-tab>
+      <v-tab :key="2">Atom</v-tab>
+      <v-tab :key="3">Sublime Text</v-tab>
+      <v-tab-item>
+        <article-cell v-for="i in 2" :key="i"></article-cell>
+      </v-tab-item>
+      <v-tab-item>
+        <article-cell v-for="i in 2" :key="i"></article-cell>
+      </v-tab-item>
+      <v-tab-item>
+        <article-cell v-for="i in 2" :key="i"></article-cell>
+      </v-tab-item>
+    </v-tabs>
   </div>
 </template>
 
@@ -11,10 +29,9 @@ export default {
   components: {
     ArticleCell,
   },
-  data () {
-    return {
-    }
-  },
+  data: () => ({
+    active: null,
+  }),
 }
 </script>
 

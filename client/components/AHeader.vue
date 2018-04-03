@@ -20,7 +20,10 @@
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Application</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn to="/topic/create"><v-icon>add</v-icon>新话题</v-btn>
+      <v-tooltip bottom>
+        <v-btn to="/topic/create" flat icon slot="activator"><v-icon>add</v-icon></v-btn>
+        <span>新话题</span>
+      </v-tooltip>
       <v-btn v-if="!logged" to="/login">Login</v-btn>
       <span v-else>
         <v-menu
@@ -33,19 +36,21 @@
             <img :src="user.photo" alt="Avatar">
           </v-avatar>
           <v-card>
-            <v-list avatar>
-              <v-list-tile-avatar to="/personal">
-                <img :src="user.photo" alt="Avatar">
-              </v-list-tile-avatar>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ user.name }}</v-list-tile-title>
-                <v-list-tile-sub-title>Front Developer</v-list-tile-sub-title>
-              </v-list-tile-content>
+            <v-list>
+              <v-list-tile avatar>
+                <v-list-tile-avatar to="/personal">
+                  <img :src="user.photo" alt="Avatar">
+                </v-list-tile-avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ user.name }}</v-list-tile-title>
+                  <v-list-tile-sub-title>Front Developer</v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
             </v-list>
             <v-divider></v-divider>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn type="text" @click="logout">Logout</v-btn>
+              <v-btn flat type="text" @click="logout">Logout</v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>

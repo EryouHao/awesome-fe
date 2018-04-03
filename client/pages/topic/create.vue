@@ -15,7 +15,7 @@
               <v-radio color="black" value="atom" label="Atom"></v-radio>
               <v-radio color="black" value="sublime" label="Sublime Text"></v-radio>
             </v-radio-group>
-            <mavon-editor v-model="content" />
+            <mavon-editor class="topic-editor" v-model="content" />
             <v-card-actions>
               <v-btn type="submit" class="md-primary" :disabled="sending">发布</v-btn>
             </v-card-actions>
@@ -43,5 +43,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.v-note-wrapper {
+  z-index: 0;
+}
 </style>

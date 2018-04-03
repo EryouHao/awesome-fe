@@ -1,13 +1,13 @@
 <template>
   <div class="cell">
     <div class="title-container">
-      <v-avatar class="avatar">
+      <v-avatar size="32" class="avatar">
         <img src="~assets/images/avatar.png" alt="Avatar">
       </v-avatar>
       <span class="number">96 / 14505</span>
       <span class="tag">精华</span>
       <span></span>
-      <a href="#" class="title">Hello 了个 world</a>
+      <a href="#" class="topic-title">Hello 了个 world</a>
     </div>
     <span class="time">半小时前</span>
   </div>
@@ -46,7 +46,7 @@ export default {
 .title-container {
   flex: 1;
 }
-.title {
+.topic-title {
   font-size: 18px;
 }
 .tag {
