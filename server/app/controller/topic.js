@@ -25,22 +25,38 @@ class TopicController extends Controller {
   }
 
   async upload() {
-    console.log('run....');
     const { ctx, config } = this;
     const stream = await ctx.getFileStream();
-    const filename = encodeURIComponent(stream.fields.name) +
+    const filename = encodeURIComponent((new Date()).getTime()) +
       path.extname(stream.filename).toLowerCase();
     const target = path.join(config.upload.path, filename);
-
-    const writeStream = fs.createWriteStream(target);
-    try {
-      await awaitWriteStream(stream.pipe(writeStream));
-      ctx.body = {
-        success: true,
-        url: config.upload.url + filename,
-      };
-    } catch (err) {
-      console.log(err);
+    // 七牛云上传
+    if (config.qn.accessKey) {
+      try {
+        const upload = this.ctx.helper.qnUpload(config.qn);
+        const result = await upload(stream);
+        ctx.body = {
+          success: true,
+          url: `${config.qn.origin}/${result.hash}`,
+        };
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      // 普通上传 FIXME: URL 配置
+      const writeStream = fs.createWriteStream(target);
+      try {
+        await awaitWriteStream(stream.pipe(writeStream));
+        ctx.body = {
+          success: true,
+          url: `http://localhost:7001${config.upload.url + filename}`,
+        };
+      } catch (err) {
+        ctx.body = {
+          success: false,
+          message: err.message,
+        };
+      }
     }
   }
 }

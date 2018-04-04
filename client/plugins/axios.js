@@ -53,6 +53,7 @@ export default ({ redirect, store }) => {
   }
 
   const topic = {
+    createTopic: form => post('/api/topic/create', form),
     uploadImage: file => post('/api/topic/upload', file),
   }
 

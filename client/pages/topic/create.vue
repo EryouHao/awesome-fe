@@ -54,28 +54,24 @@ export default {
       console.log(this.imgFile)
       console.log(form)
     },
-    async imgAdd (pos, file) {
+    imgAdd (pos, file) {
       this.imgFile[pos] = file
-      console.log(this.imgFile)
+      console.log('待上传的文件：', this.imgFile)
       const formData = new FormData()
       formData.append('image', file)
-      // const _csrf = 'PUtNtpjLKoSnlRgKFfEYaM1C'
-      try {
-        axios({
-          url: '/api/topic/upload',
-          method: 'post',
-          data: formData,
-          // headers: { 'Content-Type': 'multipart/form-data' },
-        }).then(url => {
-          console.log(url)
-        }).catch(err => console.log(err))
-        // const result = await this.$api.topic.uploadImage(file)
-        // console.log('result: ', result)
-        // const url = 'http://fehey.com/images/hello.png'
-        // this.$refs.mavonEditor.$img2Url(pos, url)
-      } catch (err) {
-        console.log('ERR: ', err)
-      }
+      axios({
+        url: '/api/topic/upload',
+        method: 'post',
+        data: formData,
+        // headers: { 'Content-Type': 'multipart/form-data' },
+      }).then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          this.$refs.mavonEditor.$img2Url(pos, res.data.url)
+        } else {
+          console.log(res.data.message)
+        }
+      }).catch(err => console.log(err))
     },
     imgDel (pos) {
       // delete this.imgFile[pos]
