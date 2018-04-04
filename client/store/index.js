@@ -18,7 +18,13 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit ({ commit }, { req }) {
-    // console.log('req.headers: ', req.headers)
+    if (req.headers.cookie) {
+      const match = req.headers.cookie.match(/afeUser=([^;]*)/)
+      if (match) {
+        const afeUser = JSON.parse(decodeURIComponent(match[1]))
+        commit('SET_USER', afeUser)
+      }
+    }
   },
   async fetchUserInfo ({ commit }) {
     const res = await Vue.prototype.$api.user.fetchUserInfo()

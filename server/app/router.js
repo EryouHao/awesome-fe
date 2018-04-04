@@ -12,14 +12,8 @@ module.exports = app => {
   router.get('/user/logout', controller.user.logout);
   router.post('/topic/upload', controller.topic.upload);
 
-  /**
-   * 挂载鉴权路由，相当于
-   * router.get('/passport/github', github)
-   * router.get('/passport/github/callback', github)
-   */
   app.passport.mount('github', {
     loginURL: '/passport/github',
     callbackURL: '/passport/github/callback',
-    // successRedirect: 'http://localhost:3000',
   });
 };

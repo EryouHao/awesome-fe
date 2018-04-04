@@ -18,27 +18,13 @@ class HomeController extends Controller {
           accessToken: ctx.user.accessToken,
         };
         const userModel = new ctx.model.User(data);
-        const res = await userModel.save();
-        console.log('第一次创建');
-        console.log(res);
-      } else {
-        console.log('已经存在了');
-        console.log(ctx.user);
+        await userModel.save();
       }
+      const value = JSON.stringify(ctx.user);
+      ctx.cookies.set('afeUser', encodeURIComponent(value), {
+        httpOnly: true,
+      });
       ctx.redirect('http://127.0.0.1:3000');
-    } else {
-      ctx.session.returnTo = ctx.path;
-      ctx.body = `
-        <div>
-          <h2>${ctx.path}</h2>
-          <hr>
-          Login with
-          <a href="/passport/weibo">Weibo</a> | <a href="/passport/github">Github</a> |
-          <a href="/passport/bitbucket">Bitbucket</a> | <a href="/passport/twitter">Twitter</a>
-          <hr>
-          <a href="/">Home</a> | <a href="/user">User</a>
-        </div>
-      `;
     }
   }
 }

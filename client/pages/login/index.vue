@@ -10,14 +10,7 @@ export default {
   }),
   methods: {
     async loginWithGithub () {
-      // const res = await this.$api.user.loginWithGithub()
-      // console.log(res)
       location.assign('http://127.0.0.1:7001/passport/github')
-      // if (res.success) {
-      //   window.location.href = res.url
-      // } else {
-      //   console.log(res.message)
-      // }
     },
   },
 }

@@ -12,6 +12,7 @@ class UserController extends Controller {
   async logout() {
     const { ctx } = this;
     ctx.logout();
+    ctx.cookies.set('afeUser', null);
     ctx.body = { success: true };
   }
 

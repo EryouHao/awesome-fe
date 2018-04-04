@@ -36,6 +36,7 @@
 import axios from 'axios'
 
 export default {
+  middleware: 'authenticated',
   data: () => ({
     content: 'hello',
     title: '',
