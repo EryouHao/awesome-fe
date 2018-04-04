@@ -16,7 +16,7 @@ class TopicController extends Controller {
       title: body.title,
       category: body.category,
       content: body.content,
-      userId: ctx.user._id,
+      userId: ctx.user.id,
     });
 
     ctx.body = {
@@ -58,6 +58,16 @@ class TopicController extends Controller {
         };
       }
     }
+  }
+
+  async all() {
+    const { ctx, service } = this;
+    const topicList = await service.topic.getAllTopic();
+
+    ctx.body = {
+      success: true,
+      topicList: topicList || [],
+    };
   }
 }
 

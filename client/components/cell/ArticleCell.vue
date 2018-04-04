@@ -7,7 +7,7 @@
       <span class="number">96 / 14505</span>
       <span class="tag">精华</span>
       <span></span>
-      <a href="#" class="topic-title">Hello 了个 world</a>
+      <a href="#" class="topic-title">{{ topic.title }}</a>
     </div>
     <span class="time">半小时前</span>
   </div>
@@ -15,6 +15,9 @@
 
 <script>
 export default {
+  props: {
+    topic: Object,
+  },
   data () {
     return {
     }

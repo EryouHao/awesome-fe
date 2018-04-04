@@ -45,14 +45,16 @@ export default {
     imgFile: {},
   }),
   methods: {
-    submit () {
+    async submit () {
       const form = {
         title: this.title,
         content: this.content,
         category: this.category,
       }
-      console.log(this.imgFile)
-      console.log(form)
+      const { success } = await this.$api.topic.createTopic(form)
+      if (success) {
+        console.log('文章添加成功')
+      }
     },
     imgAdd (pos, file) {
       this.imgFile[pos] = file

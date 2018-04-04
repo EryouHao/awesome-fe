@@ -3,13 +3,12 @@
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
-  const ObjectId = Schema.ObjectId;
 
   const TopicSchema = new Schema({
     title: { type: String },
     category: { type: String },
     content: { type: String },
-    userId: { type: ObjectId },
+    userId: { type: String },
     top: { type: Boolean, default: false },
     good: { type: Boolean, default: false },
     lock: { type: Boolean, default: false },

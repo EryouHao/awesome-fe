@@ -6,17 +6,24 @@
       slider-color="black"
       height="40"
     >
+      <v-tab :key="0">全部</v-tab>
       <v-tab :key="1">VSCode</v-tab>
       <v-tab :key="2">Atom</v-tab>
       <v-tab :key="3">Sublime Text</v-tab>
       <v-tab-item>
-        <article-cell v-for="i in 2" :key="i"></article-cell>
+        <article-cell v-if="topicList" v-for="topic in topicList" :topic="topic"></article-cell>
       </v-tab-item>
       <v-tab-item>
-        <article-cell v-for="i in 2" :key="i"></article-cell>
+        2
+        <!-- <article-cell v-for="i in 2" :key="i"></article-cell> -->
       </v-tab-item>
       <v-tab-item>
-        <article-cell v-for="i in 2" :key="i"></article-cell>
+        3
+        <!-- <article-cell v-for="i in 2" :key="i"></article-cell> -->
+      </v-tab-item>
+      <v-tab-item>
+        4
+        <!-- <article-cell v-for="i in 2" :key="i"></article-cell> -->
       </v-tab-item>
     </v-tabs>
   </div>
@@ -31,7 +38,19 @@ export default {
   },
   data: () => ({
     active: null,
+    topicList: null,
   }),
+  mounted () {
+    this.fetchAllTopic()
+  },
+  methods: {
+    async fetchAllTopic () {
+      const res = await this.$api.topic.fetchAllTopic()
+      if (res.success) {
+        this.topicList = res.topicList
+      }
+    },
+  },
 }
 </script>
 

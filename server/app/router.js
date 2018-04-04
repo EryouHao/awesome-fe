@@ -14,6 +14,7 @@ module.exports = app => {
   // topic
   router.post('/topic/create', controller.topic.create);
   router.post('/topic/upload', controller.topic.upload);
+  router.get('/topic/all', controller.topic.all);
 
   app.passport.mount('github', {
     loginURL: '/passport/github',
