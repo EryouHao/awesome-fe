@@ -61,6 +61,7 @@ module.exports = {
     { src: '~plugins/vuetify.js' },
     { src: '~plugins/axios' },
     { src: '~plugins/mavon-editor', ssr: false },
+    { src: '~plugins/vue-global.js' },
   ],
   modules: [
     '@nuxtjs/axios',

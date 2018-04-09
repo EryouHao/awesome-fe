@@ -2,14 +2,15 @@
   <div class="cell">
     <div class="title-container">
       <v-avatar size="32" class="avatar">
-        <img src="~assets/images/avatar.png" alt="Avatar">
+        <img :src="topic.userPhoto" alt="Avatar">
       </v-avatar>
-      <span class="number">96 / 14505</span>
-      <span class="tag">精华</span>
+      <span class="number">{{ topic.replyCount }} / {{ topic.visitCount }}</span>
+      <span class="tag" v-if="topic.good">精华</span>
+      <span class="tag" v-else>{{ topic.category }}</span>
       <span></span>
-      <a href="#" class="topic-title">{{ topic.title }}</a>
+      <a :href="`/topic/${topic._id}`" class="topic-title">{{ topic.title }}</a>
     </div>
-    <span class="time">半小时前</span>
+    <span class="time">{{ topic.createAt | formatTime }}</span>
   </div>
 </template>
 

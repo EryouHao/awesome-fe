@@ -11,7 +11,12 @@
       <v-tab :key="2">Atom</v-tab>
       <v-tab :key="3">Sublime Text</v-tab>
       <v-tab-item>
-        <article-cell v-if="topicList" v-for="topic in topicList" :topic="topic"></article-cell>
+        <article-cell
+          v-if="topicList"
+          v-for="(topic, index) in topicList"
+          :key="index"
+          :topic="topic"
+        ></article-cell>
       </v-tab-item>
       <v-tab-item>
         2
@@ -47,7 +52,7 @@ export default {
     async fetchAllTopic () {
       const res = await this.$api.topic.fetchAllTopic()
       if (res.success) {
-        this.topicList = res.topicList
+        this.topicList = res.list
       }
     },
   },
