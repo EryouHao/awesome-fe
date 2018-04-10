@@ -2,3 +2,22 @@
 .container {
   margin: 0;
 }
+
+.topic-content {
+  p {
+    line-height: 28px;
+    margin: 16px 0;
+    img {
+      max-width: 100%;
+    }
+  }
+  code {
+    width: 100%;
+    padding: 4px 8px;
+    box-shadow: none;
+    overflow-x: auto;
+  }
+  code:after, code:before, kbd:after, kbd:before {
+    content: none;
+  }
+}

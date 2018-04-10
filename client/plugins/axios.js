@@ -47,18 +47,23 @@ export default ({ redirect, store }) => {
   // DELETE ME
   console.log(post, get)
 
+  const home = {
+    fetchList: () => get('/api/home/list'),
+  }
+
   const user = {
     fetchUserInfo: () => get('/api/user/info'),
     logout: () => get('/api/user/logout'),
   }
 
   const topic = {
+    fetchTopic: id => get(`/api/topic/${id}`),
     createTopic: form => post('/api/topic/create', form),
     uploadImage: file => post('/api/topic/upload', file),
-    fetchAllTopic: () => get('/api/topic/all'),
   }
 
   Vue.prototype.$api = {
+    home,
     user,
     topic,
   }

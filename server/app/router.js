@@ -5,16 +5,20 @@
  */
 module.exports = app => {
   const { router, controller } = app;
+  const { home, user, topic } = controller;
+
+  // home
+  router.get('/home/list', home.list);
 
   // user
-  router.get('/user/login', controller.user.login);
-  router.get('/user/info', controller.user.getUserInfo);
-  router.get('/user/logout', controller.user.logout);
+  router.get('/user/login', user.login);
+  router.get('/user/info', user.getUserInfo);
+  router.get('/user/logout', user.logout);
 
   // topic
-  router.post('/topic/create', controller.topic.create);
-  router.post('/topic/upload', controller.topic.upload);
-  router.get('/topic/all', controller.topic.all);
+  router.get('/topic/:id', topic.index);
+  router.post('/topic/create', topic.create);
+  router.post('/topic/upload', topic.upload);
 
   app.passport.mount('github', {
     loginURL: '/passport/github',

@@ -17,6 +17,11 @@ class TopicService extends Service {
     const topicList = await this.ctx.model.Topic.find().sort({ createTIme: -1 });
     return topicList;
   }
+
+  async getTopicById(id) {
+    const topic = await this.ctx.model.Topic.findOne({ _id: id });
+    return topic;
+  }
 }
 
 module.exports = TopicService;

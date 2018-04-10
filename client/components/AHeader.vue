@@ -16,9 +16,9 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="black" dark fixed app>
+    <v-toolbar class="elevation-1" color="black" dark fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title class="app-name" @click="$router.push('/')">Awesome FE</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <v-btn to="/topic/create" flat icon slot="activator"><v-icon>add</v-icon></v-btn>
@@ -95,5 +95,8 @@ export default {
 .md-drawer {
   width: 230px;
   max-width: calc(100vw - 125px);
+}
+.app-name {
+  cursor: pointer;
 }
 </style>

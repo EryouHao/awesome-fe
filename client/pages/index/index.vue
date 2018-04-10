@@ -46,11 +46,11 @@ export default {
     topicList: null,
   }),
   mounted () {
-    this.fetchAllTopic()
+    this.fetchList()
   },
   methods: {
-    async fetchAllTopic () {
-      const res = await this.$api.topic.fetchAllTopic()
+    async fetchList () {
+      const res = await this.$api.home.fetchList()
       if (res.success) {
         this.topicList = res.list
       }
